@@ -1,3 +1,8 @@
-# QueensRealEstatePrice
+# HomePricePredictions
+
+## Introduction
+
+
 ## Data Source <br />
-<A href="https://www.zillow.com/queens-ny/home-values/">Zillow</a>  Queens NY 2010 - 2019
+<A href="https://www.kaggle.com/c/house-prices-advanced-regression-techniques/data">Kaggle - House Prices: Advanced Regression Techniques</a> 
+
