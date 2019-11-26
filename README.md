@@ -1,7 +1,10 @@
 # HomePricePredictions
 ## Introduction
 What is a home value? How much does a home worth? How can I sell my home to a higher price? Those are the questions many home sellers ask. The problem asked here is:<br /><br /><b> What are the driving factors that affect the price of a home?</b><br />
-Further more, <b>How can we increase the sale price of a home?</b>
+Further more, <b>How can we increase the sale price of a home?</b><br />
+<b>Initial hypothesis:</b>
+Neighborhood has a significant effect on the price of the home. 
+Each Neighborhood has different driven factors that affect the price of the home
 
 
 ## DataSet
@@ -21,7 +24,7 @@ In this step, we identify the factors in the dataset that have strong correlatio
 <br />
 For Top Three Neighborhoods, we see the following high correlation coefficient factors:
 ![enter image description here](https://raw.githubusercontent.com/scottsun17/HomePricePrediction/master/Picture/TopNeighborhoodsCorrelations.PNG)
-
+<br />
 For Bottom Three Neighborhoods, we see the following high correlation coefficient factors:
 ![enter image description here](https://raw.githubusercontent.com/scottsun17/HomePricePrediction/master/Picture/BotNeighborhoodsCorrelations.PNG)
 
@@ -29,7 +32,8 @@ For Bottom Three Neighborhoods, we see the following high correlation coefficien
 In this step, we use the three dataset to build three models using its own top correlation coefficient factors.
 
 ### Step 4: Predict the Price of the Same House using Different Models
-We use the three models from step 3 to predict the price of the same house and comparing its predicted price. We receive the following results:
+We use the three models from step 3 to predict the price of the same house and comparing its predicted price. We receive the following results:<br />
+
 |Neighborhood|Sale Price|
 |--|--|
 | Top | 230099.49 |
@@ -37,34 +41,36 @@ We use the three models from step 3 to predict the price of the same house and c
 | Bot | 105282.87 |
 
 ![enter image description here](https://raw.githubusercontent.com/scottsun17/HomePricePrediction/master/Picture/SameHoursePriceBasedonLocation.PNG)
-The same house in different neighborhoods can be sold at different prices. 
+<br />The same house in different neighborhoods can be sold at different prices. <br />
+This result proves that our initial hypothesis on price difference based on neighborhoods is correct. The same house in the top neighborhoods has significant higher price than the same house in the average or bottom neighborhoods
 
 ### Step 4: Further Analysis to Identify Price Increase Home Improvement Factors
 In this step, we tested out to certain home improvement's effects on Home Price. 
-We used the same home from step 3, assume it is located in the top three neighborhoods and improved it top three correlation factors. We received the following results: <br />
+We used the same home from step 3, assume it is located in the top three neighborhoods and improved it top three correlation factors. We received the following results: <br /><br />
 <b>Test 1:</b> Increase GrLivArea by 100% and perdict the price
-[https://raw.githubusercontent.com/scottsun17/HomePricePrediction/master/Picture/Test1Result.PNG](https://raw.githubusercontent.com/scottsun17/HomePricePrediction/master/Picture/Test1Result.PNG)
-The price of the home has <b>decreased</b> by 2724.92
-<br />
+![enter image description here](https://raw.githubusercontent.com/scottsun17/HomePricePrediction/master/Picture/Test1Result.PNG)
+<br />The price of the home has <b>decreased</b> by 2724.92
+<br /><br />
 <b>Test 2:</b> Increase OverallQual by 2 points
 ![enter image description here](https://raw.githubusercontent.com/scottsun17/HomePricePrediction/master/Picture/Test2Result.PNG)
-The price of the home has <b>increased</b> by 20480.97
-<br />
+<br />The price of the home has <b>increased</b> by 20480.97
+<br /><br />
 <b>Test 3:</b> Increase TotRmsAbvGrd by 2 rooms
 ![enter image description here](https://raw.githubusercontent.com/scottsun17/HomePricePrediction/master/Picture/Test3Result.PNG)
-The price of the home has <b>increased</b>by 3169.91
+<br />The price of the home has <b>increased</b>by 3169.91
 
 ### Step 5: Finding Contradiction in Results
 Based on assumption, we assume that improvement in the house will also improve home price. However, improvement in GrLivArea has yield a negative effect even though it has the strongest correlation with sale price. Thus we need to further analyze weather GrLivArea is the most related factor in predicting sale price.  
 
 Here we use Extra Tree Regressor to assess <b>features importances</b>
 ![enter image description here](https://raw.githubusercontent.com/scottsun17/HomePricePrediction/master/Picture/FeatureImportance.PNG)
+<br /><br />
 We identify that GarageCars has the highest feature importance in home price prediction even though it was not one of the top correlation factors. 
 Home improvement around GarageCars will yield better return than other home improvements 
 
  ## Conclusion and Possible Model Improvements
- Based on the above Models and Testings, we are fairly confident in predicting the price of a home and determine what home improvements to do, in order to receive the better sale price. The location of the home has a significant effect on the price of the home. Same/similar home located in different neighborhoods may vary the price of the home by significant amount. Different neighborhoods also value certain home features more than the others. Thus, we came up with the following possible improvement for the model:
- 
-
+Based on the above Models and Testings, we are fairly confident in predicting the price of a home and determine what home improvements to do, in order to receive the better sale price. The location of the home has a significant effect on the price of the home. Same/similar home located in different neighborhoods may vary the price of the home by significant amount. Different neighborhoods also value certain home features more than the others. Thus, we came up with the following possible improvement for the model:
+ <br />
+<br />
  1. Build models for each individual neighborhood rather than aggregate certain neighborhood together.
  2.  Replying on Feature Importance model result as factors in prediction model rather than simply top correlation coefficient factors.
